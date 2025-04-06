@@ -1,14 +1,24 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+	--color-primary: #000;
+	--color-secondary: #fff;
+}
+
+@layer base {
+	@variant dark {
+		--color-primary: #fff;
+		--color-secondary: #000;
+	}
+}
+
 html {
 	font-family: var(--font-sans);
 	@apply h-full;
 }
 
 body {
-	@apply h-full bg-white text-black antialiased transition-colors duration-300;
-}
-
-html.dark body {
-	@apply bg-black text-white;
+	@apply h-full bg-secondary text-primary antialiased transition-colors duration-300;
 }
