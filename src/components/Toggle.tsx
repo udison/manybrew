@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import styles from "./Toggle.module.css";
 
 type Props = {
@@ -10,6 +10,8 @@ type Props = {
 
 export default function Toggle({ state: inState, onStateChange }: Props) {
 	const [state, setState] = useState(inState || false);
+
+	useEffect(() => setState(inState || false), [inState]);
 
 	function onChange(e: ChangeEvent<HTMLInputElement>) {
 		setState(e.target.checked);
