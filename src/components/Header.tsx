@@ -22,7 +22,7 @@ export default function Header() {
 	}, [dark])
 
 	return (
-		<nav className={`${styles.navbar} sticky top-0 flex justify-between gap-4 p-4 border-b border-gray-700 dark:border-gray-400 text-xs`}>
+		<nav className={`${styles.navbar} backdrop-blur-sm sticky top-0 flex justify-between gap-4 p-4 border-b border-gray-700 dark:border-gray-400 text-xl`}>
 			<ul className="flex items-center">
 				<li className="mr-4">
 					<Link href="/" className="flex justify-center items-center gap-1 font-mono text-brand">
@@ -31,20 +31,20 @@ export default function Header() {
 				</li>
 			</ul>
 
-			<ul className="flex items-center gap-4 text-gray-700 dark:text-gray-400">
+			<ul className="hidden md:flex items-center gap-4 text-gray-700 dark:text-gray-400">
 				<li className={styles.item}><Link href="/">Home</Link></li>
 				<li className={styles.item}><Link href="/brew">Brew</Link></li>
 				<li className={styles.item}><Link href="/recipes">Recipes</Link></li>
 				<li className={styles.item}><Link href="/methods">Methods</Link></li>
 
 				<li className="flex gap-1 ml-4">
-					<Sun size={14} />
+					<Sun size={18} />
 					<Toggle className="border-gray-400" state={dark} onChange={(e) => setDark(e?.target.checked || false)} />
-					<Moon size={14} />
+					<Moon size={18} />
 				</li>
 
-				<li className={styles.item}><Link href="/login" className="flex gap-1">
-					<CircleUserIcon size={14} />
+				<li className={styles.item}><Link href="/login" className="flex items-center gap-1">
+					<CircleUserIcon size={18} />
 					Login
 				</Link></li>
 			</ul>

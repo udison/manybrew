@@ -1,7 +1,6 @@
 'use client';
 
 import { ChangeEvent, useEffect, useState } from "react";
-import styles from "./Toggle.module.css";
 
 interface Props {
 	state?: boolean;
@@ -26,7 +25,7 @@ export default function Toggle({ state: inState, onChange, circleColor, borderCo
 
 	return (
 		<div className={`flex items-center ${className || ""}`}>
-			<div className={`relative border rounded-full w-7 p-0.5 ${borderColor || "border-primary"}`}>
+			<div className={`relative border rounded-full w-9 p-0.5 ${borderColor || "border-primary"}`}>
 				<input
 					checked={state}
 					onChange={onCheckChange}
@@ -36,12 +35,12 @@ export default function Toggle({ state: inState, onChange, circleColor, borderCo
 
 				<span className={`
 					block
-					w-2
-					h-2
+					w-3
+					h-3
 					rounded-full
 					pointer-events-none
 					transition-transform
-					${state ? styles.active : ""}
+					${state ? "translate-x-[18px]" : ""}
 					${circleColor || "bg-primary"}
 				`}></span>
 			</div>
