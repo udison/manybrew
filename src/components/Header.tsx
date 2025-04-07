@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link"
 import Toggle from "./Toggle";
-import { Moon, Sun } from "lucide-react";
+import { CircleUserIcon, Moon, Sun } from "lucide-react";
 
 import styles from "./Header.module.css";
 import Image from "next/image";
@@ -34,16 +34,21 @@ export default function Header() {
 			<ul className="flex items-center gap-4 text-gray-700 dark:text-gray-400">
 				<li className={styles.item}><Link href="/">Home</Link></li>
 				<li className={styles.item}><Link href="/brew">Brew</Link></li>
-				<li className={styles.item}><Link href="/coffee">Coffee</Link></li>
+				<li className={styles.item}><Link href="/recipes">Recipes</Link></li>
+				<li className={styles.item}><Link href="/methods">Methods</Link></li>
 
 				<li className="flex gap-1 ml-4">
 					<Sun size={14} />
-					<Toggle borderColor="border-gray-700 dark:border-gray-400" circleColor="bg-gray-700 dark:bg-gray-400" state={dark} onChange={(e) => setDark(e?.target.checked || false)} />
+					<Toggle className="border-gray-400" state={dark} onChange={(e) => setDark(e?.target.checked || false)} />
 					<Moon size={14} />
 				</li>
 
-				<li className={styles.item}><Link href="/login">Login</Link></li>
+				<li className={styles.item}><Link href="/login" className="flex gap-1">
+					<CircleUserIcon size={14} />
+					Login
+				</Link></li>
 			</ul>
 		</nav>
 	)
 }
+// borderColor="border-gray-700 dark:border-gray-400" circleColor="bg-gray-700 dark:bg-gray-400" 

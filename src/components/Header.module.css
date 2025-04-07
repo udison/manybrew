@@ -1,5 +1,9 @@
 .navbar {
-	.item:hover {
-		color: var(--color-primary)
+	.item {
+		transition: color .2s;
+
+		&:hover {
+			color: var(--color-primary)
+		}
 	}
 }

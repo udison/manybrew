@@ -8,14 +8,14 @@ interface Props {
 	circleColor?: string;
 	borderColor?: string;
 	onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+	className?: string;
 }
 
-export default function Toggle({ state: inState, onChange, circleColor, borderColor }: Props) {
+export default function Toggle({ state: inState, onChange, circleColor, borderColor, className }: Props) {
 	const [state, setState] = useState(inState);
 
 	useEffect(() => {
 		setState(inState || false)
-		console.log(inState)
 	}, [inState]);
 
 	function onCheckChange(e: ChangeEvent<HTMLInputElement>) {
@@ -25,7 +25,7 @@ export default function Toggle({ state: inState, onChange, circleColor, borderCo
 	}
 
 	return (
-		<div className="flex items-center">
+		<div className={`flex items-center ${className || ""}`}>
 			<div className={`relative border rounded-full w-7 p-0.5 ${borderColor || "border-primary"}`}>
 				<input
 					checked={state}
