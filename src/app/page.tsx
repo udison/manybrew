@@ -14,35 +14,7 @@ export default function Home() {
         </span>
       </h1>
 
-      <Button size="sm"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-      <Button size="md"><CoffeeIcon /> Let&apos;s get brewing!</Button>
       <Button size="lg"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-      <Button size="xl"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-
-      <Button variant="secondary" size="sm"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-      <Button variant="secondary" size="md"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-      <Button variant="secondary" size="lg"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-      <Button variant="secondary" size="xl"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-
-      <Button variant="brand" size="sm"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-      <Button variant="brand" size="md"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-      <Button variant="brand" size="lg"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-      <Button variant="brand" size="xl"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-
-      <Button variant="primary-outlined" size="sm"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-      <Button variant="primary-outlined" size="md"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-      <Button variant="primary-outlined" size="lg"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-      <Button variant="primary-outlined" size="xl"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-
-      <Button variant="secondary-outlined" size="sm"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-      <Button variant="secondary-outlined" size="md"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-      <Button variant="secondary-outlined" size="lg"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-      <Button variant="secondary-outlined" size="xl"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-
-      <Button variant="brand-outlined" size="sm"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-      <Button variant="brand-outlined" size="md"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-      <Button variant="brand-outlined" size="lg"><CoffeeIcon /> Let&apos;s get brewing!</Button>
-      <Button variant="brand-outlined" size="xl"><CoffeeIcon /> Let&apos;s get brewing!</Button>
     </main>
   );
 }
