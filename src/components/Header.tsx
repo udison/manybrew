@@ -1,29 +1,20 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import Link from "next/link"
 import { Moon, Sun } from "lucide-react";
 
 import styles from "./Header.module.css";
 import Image from "next/image";
 import { Button } from "./Button";
+import { ThemeContext } from "@/contexts/ThemeContext";
 
 export default function Header() {
-	const [dark, setDark] = useState(false);
+	const { theme, setTheme } = useContext(ThemeContext)!;
 
-	function toggleDarkMode() {
-		setDark(!dark);
+	function toggleTheme() {
+		setTheme(theme === "light" ? "dark" : "light");
 	}
-
-	useEffect(() => {
-		const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-		setDark(prefersDarkMode);
-	}, [])
-
-	useEffect(() => {
-		document.documentElement.classList.toggle("dark", dark);
-	}, [dark])
 
 	return (
 		<nav className={`${styles.navbar} backdrop-blur-sm sticky top-0 flex justify-between gap-4 p-4 border-b border-gray-700/20 dark:border-gray-400/30 text-xl z-10`}>
@@ -41,8 +32,8 @@ export default function Header() {
 				<li className={`${styles.item} hidden sm:list-item`}><Link href="/brew">Brew</Link></li>
 
 				<li className="flex">
-					<Button onClick={toggleDarkMode} size="icon-md">
-						{dark ? <Moon size={18} /> : <Sun size={18} />}
+					<Button onClick={toggleTheme} size="icon-md">
+						{theme === "dark" ? <Moon size={18} /> : <Sun size={18} />}
 					</Button>
 				</li>
 			</ul>

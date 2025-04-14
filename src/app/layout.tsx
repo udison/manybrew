@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import { Fustat, Azeret_Mono } from "next/font/google"
+import ThemeProvider from "@/contexts/ThemeContext";
 
 export const metadata: Metadata = {
   title: "ManyBrew",
@@ -28,8 +29,10 @@ export default function RootLayout({
       </head>
 
       <body>
-        <Header />
-        {children}
+        <ThemeProvider>
+          <Header />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
