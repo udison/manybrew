@@ -1,6 +1,7 @@
 "use client";
 
 import { drawRadialProgress } from "@/helpers/canvas";
+import { formatToFullMinute } from "@/helpers/time";
 import { ArrowLeftIcon } from "lucide-react"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react";
@@ -21,7 +22,9 @@ function BrewStopwatch() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [watchState, setWatchState] = useState<BrewWatchStates>("stopped");
   const [progress, setProgress] = useState(0);
+  const [timeElapsed, setTimeElapsed] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout>(null);
+  const brewTargetTime = 3 * 60; // seconds
 
   useEffect(() => drawRadialProgress(canvasRef.current!, progress), [canvasRef, progress]);
 
@@ -45,7 +48,8 @@ function BrewStopwatch() {
     setWatchState("running");
 
     intervalRef.current = setInterval(() => {
-      setProgress((p) => p + (1 * delta))
+      setProgress((p) => p + (100 / brewTargetTime * delta))
+      setTimeElapsed((time) => time + delta);
     }, frameTime);
   }
 
@@ -64,8 +68,9 @@ function BrewStopwatch() {
         <h1 className="text-2xl">Brewing</h1>
       </header>
 
-      <button onClick={onStopwatchClick} className="flex items-center justify-center">
+      <button onClick={onStopwatchClick} className="relative flex items-center justify-center">
         <canvas width={270} height={270} ref={canvasRef} className="drop-shadow-(0 0 5px #ffffff88)]"></canvas>
+        <span className="absolute font-mono">{formatToFullMinute(timeElapsed)}</span>
       </button>
     </>
   )
