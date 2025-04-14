@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/Button";
 import { CoffeeIcon } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -14,7 +15,9 @@ export default function Home() {
         </span>
       </h1>
 
-      <Button size="lg"><CoffeeIcon /> Let&apos;s get brewing!</Button>
+      <Link href={"brew"}>
+        <Button size="lg"><CoffeeIcon /> Let&apos;s get brewing!</Button>
+      </Link>
     </main>
   );
 }
