@@ -68,9 +68,9 @@ function BrewStopwatch() {
         <h1 className="text-2xl">Brewing</h1>
       </header>
 
-      <button onClick={onStopwatchClick} className="relative flex items-center justify-center">
+      <button onClick={onStopwatchClick} className="relative flex items-center justify-center self-center cursor-pointer">
         <canvas width={270} height={270} ref={canvasRef} className="drop-shadow-(0 0 5px #ffffff88)]"></canvas>
-        <span className="absolute font-mono">{formatToFullMinute(timeElapsed)}</span>
+        <span className="absolute font-mono">{timeElapsed ? formatToFullMinute(timeElapsed) : "Tap to start"}</span>
       </button>
     </>
   )
