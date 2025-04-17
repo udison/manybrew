@@ -10,11 +10,13 @@ export const metadata: Metadata = {
 };
 
 const sans = Fustat({
-  variable: "--font-fustat"
+  variable: "--font-fustat",
+  subsets: ["latin"],
 });
 
 const mono = Azeret_Mono({
-  variable: "--font-azeret-mono"
+  variable: "--font-azeret-mono",
+  subsets: ["latin"],
 });
 
 export default function RootLayout({
