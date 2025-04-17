@@ -4,8 +4,11 @@ import TransitionalLink from "@/components/TransitionalLink";
 import { ThemeContext } from "@/contexts/ThemeContext";
 import { drawRadialProgress } from "@/helpers/canvas";
 import { formatToFullMinute } from "@/helpers/time";
-import { ArrowLeftIcon } from "lucide-react"
+import { ArrowLeftIcon, PauseIcon, PlayIcon, RotateCwIcon } from "lucide-react"
 import { useContext, useEffect, useRef, useState } from "react";
+
+import styles from "./brew.module.css";
+import { jamesHoffmannSmallV60, Recipe, Step } from "@/models/recipe";
 
 type BrewWatchStates = "stopped" | "running";
 
@@ -27,6 +30,7 @@ function BrewStopwatch() {
   const [timeElapsed, setTimeElapsed] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout>(null);
   const brewTargetTime = 3 * 60; // seconds
+  const [recipe, setRecipe] = useState<Recipe>(jamesHoffmannSmallV60);
 
   useEffect(() => drawRadialProgress(canvasRef.current!, progress, theme), [canvasRef, progress, theme]);
 
@@ -67,17 +71,40 @@ function BrewStopwatch() {
           <ArrowLeftIcon />
         </TransitionalLink>
 
-        <h1 className="text-2xl">Brewing</h1>
+        <h1 className="text-2xl">Brewing <span className="hidden sm:inline">{recipe.name}</span></h1>
       </header >
 
-      <button onClick={onStopwatchClick} className="relative flex items-center justify-center self-center cursor-pointer">
+      <button onClick={onStopwatchClick} className="relative flex items-center justify-center self-center cursor-pointer mt-10 transition-transform active:scale-[.98]">
 
         <canvas width={270} height={270} ref={canvasRef} className="drop-shadow-(0 0 5px #ffffff88)]"></canvas>
         <span className="absolute font-mono">{timeElapsed ? formatToFullMinute(timeElapsed) : "Tap to start"}</span>
 
-        <div></div>
+        {/*<span className="absolute top-0 flex flex-col items-center pb-1 origin-bottom -translate-y-full">
+          <p>+50g</p>
+          {watchState === "stopped" ? <PlayIcon size={16} /> : <PauseIcon size={16} />}
+        </span>*/}
+
+        {recipe.steps.map((step) => <ActionMarker key={step.time} step={step} targetBrewTime={recipe.targetBrewTime} timeElapsed={timeElapsed} />)}
+
+
 
       </button>
     </>
+  )
+}
+
+function ActionMarker({ step, targetBrewTime, timeElapsed }: { step: Step, targetBrewTime: number, timeElapsed: number }) {
+  if (step.action === "wait") return;
+
+  const angle = ((step.time / targetBrewTime) * 360);
+
+  return (
+    <span className={`${styles.actionContainer} ${timeElapsed >= step.time ? styles.reached : ""}`} style={{ transform: `translate(0, -50%) rotate(${angle}deg);` }}>
+      <span className={styles.marker}></span>
+      <div className={styles.content} style={{ transform: `translate(0, -36px) rotate(-${angle}deg);` }}>
+        {step.action === "pour" && <p>+{step.value}g</p>}
+        {step.action === "swirl" && <RotateCwIcon size={16} />}
+      </div>
+    </span>
   )
 }
