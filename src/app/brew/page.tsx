@@ -4,7 +4,7 @@ import TransitionalLink from "@/components/TransitionalLink";
 import { ThemeContext } from "@/contexts/ThemeContext";
 import { drawRadialProgress } from "@/helpers/canvas";
 import { formatToFullMinute } from "@/helpers/time";
-import { ArrowLeftIcon, PauseIcon, PlayIcon, RotateCwIcon } from "lucide-react"
+import { ArrowLeftIcon, RotateCwIcon } from "lucide-react"
 import { useContext, useEffect, useRef, useState } from "react";
 
 import styles from "./brew.module.css";
@@ -30,7 +30,7 @@ function BrewStopwatch() {
   const [timeElapsed, setTimeElapsed] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout>(null);
   const brewTargetTime = 3 * 60; // seconds
-  const [recipe, setRecipe] = useState<Recipe>(jamesHoffmannSmallV60);
+  const [recipe] = useState<Recipe>(jamesHoffmannSmallV60);
 
   useEffect(() => drawRadialProgress(canvasRef.current!, progress, theme), [canvasRef, progress, theme]);
 
