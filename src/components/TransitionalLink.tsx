@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation";
 import { MouseEvent, ReactNode } from "react";
 
 interface TransitionalLinkProps extends LinkProps {
-	children: ReactNode
+	children: ReactNode,
+	className?: string,
 }
 
 export default function TransitionalLink({
