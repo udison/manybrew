@@ -1,5 +1,6 @@
 "use client";
 
+import TransitionalLink from "@/components/TransitionalLink";
 import { drawRadialProgress } from "@/helpers/canvas";
 import { formatToFullMinute } from "@/helpers/time";
 import { ArrowLeftIcon } from "lucide-react"
@@ -61,16 +62,20 @@ function BrewStopwatch() {
   return (
     <>
       <header className="relative flex justify-center items-center py-4">
-        <Link href={"/"} className="absolute left-[16px]" >
+        <TransitionalLink href={"/"} className="absolute left-[16px]" >
           <ArrowLeftIcon />
-        </Link>
+        </TransitionalLink>
 
         <h1 className="text-2xl">Brewing</h1>
-      </header>
+      </header >
 
       <button onClick={onStopwatchClick} className="relative flex items-center justify-center self-center cursor-pointer">
+
         <canvas width={270} height={270} ref={canvasRef} className="drop-shadow-(0 0 5px #ffffff88)]"></canvas>
         <span className="absolute font-mono">{timeElapsed ? formatToFullMinute(timeElapsed) : "Tap to start"}</span>
+
+        <div></div>
+
       </button>
     </>
   )

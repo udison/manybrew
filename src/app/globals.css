@@ -27,3 +27,12 @@ html {
 body {
 	@apply h-full bg-secondary text-primary antialiased transition-colors duration-300;
 }
+
+main {
+	transition: .4s transform, .4s opacity;
+}
+
+.fade-out-page {
+	opacity: 0;
+	transform: translateX(-20px);
+}

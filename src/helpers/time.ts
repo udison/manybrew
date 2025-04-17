@@ -4,3 +4,7 @@ export function formatToFullMinute(totalSeconds: number) {
 
 	return `${minutes.toString().padStart(2, "0")}:${seconds}`;
 }
+
+export function sleep(ms: number): Promise<void> {
+	return new Promise((resolve) => setTimeout(resolve, ms));
+}
