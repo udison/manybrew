@@ -99,9 +99,9 @@ function ActionMarker({ step, targetBrewTime, timeElapsed }: { step: Step, targe
   const angle = ((step.time / targetBrewTime) * 360);
 
   return (
-    <span className={`${styles.actionContainer} ${timeElapsed >= step.time ? styles.reached : ""}`} style={{ transform: `translate(0, -50%) rotate(${angle}deg);` }}>
+    <span className={`${styles.actionContainer} ${timeElapsed >= step.time ? styles.reached : ""}`} style={{ transform: `translate(0, -50%) rotate(${angle}deg)` }}>
       <span className={styles.marker}></span>
-      <div className={styles.content} style={{ transform: `translate(0, -36px) rotate(-${angle}deg);` }}>
+      <div className={styles.content} style={{ transform: `translate(0, -36px) rotate(-${angle}deg)` }}>
         {step.action === "pour" && <p>+{step.value}g</p>}
         {step.action === "swirl" && <RotateCwIcon size={16} />}
       </div>
