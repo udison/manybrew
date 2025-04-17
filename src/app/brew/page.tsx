@@ -1,10 +1,11 @@
 "use client";
 
 import TransitionalLink from "@/components/TransitionalLink";
+import { ThemeContext } from "@/contexts/ThemeContext";
 import { drawRadialProgress } from "@/helpers/canvas";
 import { formatToFullMinute } from "@/helpers/time";
 import { ArrowLeftIcon } from "lucide-react"
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 type BrewWatchStates = "stopped" | "running";
 
@@ -19,6 +20,7 @@ export default function BrewPage() {
 }
 
 function BrewStopwatch() {
+  const { theme } = useContext(ThemeContext)!;
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [watchState, setWatchState] = useState<BrewWatchStates>("stopped");
   const [progress, setProgress] = useState(0);
@@ -26,7 +28,7 @@ function BrewStopwatch() {
   const intervalRef = useRef<NodeJS.Timeout>(null);
   const brewTargetTime = 3 * 60; // seconds
 
-  useEffect(() => drawRadialProgress(canvasRef.current!, progress), [canvasRef, progress]);
+  useEffect(() => drawRadialProgress(canvasRef.current!, progress, theme), [canvasRef, progress, theme]);
 
   function onStopwatchClick() {
     switch (watchState) {

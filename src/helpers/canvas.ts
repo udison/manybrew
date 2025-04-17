@@ -1,4 +1,6 @@
-export function drawRadialProgress(canvas: HTMLCanvasElement, progressPercent: number) {
+import { Theme } from "@/contexts/ThemeContext";
+
+export function drawRadialProgress(canvas: HTMLCanvasElement, progressPercent: number, theme: Theme) {
 	if (!canvas) return;
 
 	const ctx = canvas.getContext("2d");
@@ -24,24 +26,16 @@ export function drawRadialProgress(canvas: HTMLCanvasElement, progressPercent: n
 	//       that should be rerendered every setInterval call
 	// Calculate the progress angle
 	if (progressPercent > 0) {
-		const startAngle = -0.5 * Math.PI; // Start at top (12 o'clock position)
+		const startAngle = -0.5 * Math.PI; // Start at top
 		const endAngle = startAngle + (progressPercent / 100) * 2 * Math.PI;
 
-		// Draw the progress arc (white, 6px width with round ends)
+		// Draw the progress
 		ctx.beginPath();
 		ctx.arc(centerX, centerY, radius, startAngle, endAngle);
-		ctx.strokeStyle = 'white';
+		ctx.strokeStyle = theme === "dark" ? "white" : "black";
 		ctx.lineWidth = 6;
 		ctx.lineCap = 'round'; // Round borders
 		ctx.stroke();
 	}
 	// TODO: Till here
-
-	// TODO: Move this display to a HTML element
-	// Display the percentage in the center
-	// ctx.font = 'bold 30px Arial';
-	// ctx.fillStyle = 'white';
-	// ctx.textAlign = 'center';
-	// ctx.textBaseline = 'middle';
-	// ctx.fillText(`${Math.round(progressPercent)}%`, centerX, centerY);
 }
