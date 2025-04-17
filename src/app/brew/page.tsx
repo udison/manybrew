@@ -4,7 +4,6 @@ import TransitionalLink from "@/components/TransitionalLink";
 import { drawRadialProgress } from "@/helpers/canvas";
 import { formatToFullMinute } from "@/helpers/time";
 import { ArrowLeftIcon } from "lucide-react"
-import Link from "next/link"
 import { useEffect, useRef, useState } from "react";
 
 type BrewWatchStates = "stopped" | "running";

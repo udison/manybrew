@@ -1,7 +1,6 @@
 'use client';
 
 import { useContext } from "react";
-import Link from "next/link"
 import { Moon, Sun } from "lucide-react";
 
 import styles from "./Header.module.css";
