@@ -5,7 +5,7 @@ BrewBuddy is a companion app designed to guide you through the art of brewing th
 # Features
 
 - [X] A timer
-- [ ] Guidance markers around the timer
+- [X] Guidance markers around the timer
 - [ ] A list of steps of the current recipe
 - [ ] Account creation
 - [ ] Log of your recent brews (including all variables, data, coffee used, etc)
