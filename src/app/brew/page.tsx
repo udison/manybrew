@@ -4,7 +4,7 @@ import TransitionalLink from "@/components/TransitionalLink";
 import { ThemeContext } from "@/contexts/ThemeContext";
 import { drawRadialProgress } from "@/helpers/canvas";
 import { formatToFullMinute } from "@/helpers/time";
-import { ArrowLeftIcon, RotateCwIcon } from "lucide-react"
+import { ArrowLeftIcon, RotateCwIcon, TargetIcon } from "lucide-react"
 import { useContext, useEffect, useRef, useState } from "react";
 
 import styles from "./brew.module.css";
@@ -79,10 +79,10 @@ function BrewStopwatch() {
         <canvas width={270} height={270} ref={canvasRef} className="drop-shadow-(0 0 5px #ffffff88)]"></canvas>
         <span className="absolute font-mono">{timeElapsed ? formatToFullMinute(timeElapsed) : "Tap to start"}</span>
 
-        {/*<span className="absolute top-0 flex flex-col items-center pb-1 origin-bottom -translate-y-full">
-          <p>+50g</p>
-          {watchState === "stopped" ? <PlayIcon size={16} /> : <PauseIcon size={16} />}
-        </span>*/}
+        <span className="flex flex-col items-center absolute top-[14px]">
+          <TargetIcon size={16} />
+          <p>{recipe.targetBrewTime / 60}</p>
+        </span>
 
         {recipe.steps.map((step) => <ActionMarker key={step.time} step={step} targetBrewTime={recipe.targetBrewTime} timeElapsed={timeElapsed} />)}
 
